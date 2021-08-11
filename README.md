@@ -14,7 +14,9 @@ $ cd portfolio $ hugo server
 
 $ hugo new about.md 
 
-$ hugo new contact.md $ hugo new resume.md
+$ hugo new contact.md 
+
+$ hugo new resume.md
 
 $ mkdir layouts/_default/ 
 
