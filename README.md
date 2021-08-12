@@ -2,31 +2,31 @@
 
 ### Kicking the Tires
 
-$ brew install hugo 
+$ brew install hugo
 
-$ choco install -y hugo-extended 
+$ choco install -y hugo-extended
 
 $ hugo version
 
-$ hugo new site portfolio 
+$ hugo new site portfolio
 
 $ cd portfolio $ hugo server
 
-$ hugo new about.md 
+$ hugo new about.md
 
-$ hugo new contact.md 
+$ hugo new contact.md
 
 $ hugo new resume.md
 
-$ mkdir layouts/_default/ 
+$ mkdir layouts/_default/
 
 $ cp layouts/index.html layouts/_default/single.html
 
 $ hugo server
 
-$ hugo 
+$ hugo
 
-$ rm -r public && hugo 
+$ rm -r public && hugo
 
 $ hugo --cleanDestinationDir --minify
 
@@ -39,7 +39,7 @@ $ hugo --cleanDestinationDir --minify
 
 $ hugo new theme basic
 
-$ mv layouts/index.html themes/basic/layouts/index.html 
+$ mv layouts/index.html themes/basic/layouts/index.html
 
 $ mv layouts/_default/single.html themes/basic/layouts/_
 default/single.html
@@ -58,7 +58,7 @@ title: "{{ replace .Name "-" " " | title }}"
 draft: false
 ---
 
-![alt](via.placeholder.com/640x140)
+![alt](https://via.placeholder.com/640x140)
 
 Description...
 
@@ -66,9 +66,11 @@ Description...
 
 * item
 * item
-* item // ================================================
+* item 
 
-$ hugo new projects/awesomeco.md 
+// ================================================
+
+$ hugo new projects/awesomeco.md
 
 $ hugo new projects/jabberwocky.md
 
