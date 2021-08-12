@@ -66,7 +66,7 @@ Description...
 
 * item
 * item
-* item 
+* item
 
 // ================================================
 
@@ -176,5 +176,7 @@ Create the file themes/basic/layouts/projects/list.html.
 # Chapter-04
 
 ### Working with Data
+
+// ================================================
 
 // ================================================
