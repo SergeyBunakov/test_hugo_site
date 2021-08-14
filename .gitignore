@@ -25,5 +25,6 @@ package-lock.json
 /uploads/*.jpg
 .idea/
 Procfile
+Profile
 
 frontend/.eslintcache
