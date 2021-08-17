@@ -1010,4 +1010,16 @@ blog/portfolio/themes/basic/layouts/posts/single.html
 
 // ================================================
 ## Displaying Related Content
+
+blog/portfolio/content/projects/jabberwocky.md
+
+```
+ech_used:
+- JavaScript
+- CSS
+- HTML
+keywords:
+- jabberwocky
+```
+
 // ================================================
