@@ -843,7 +843,171 @@ month: "{{ dateFormat "2006/01" .Date }}”
 </article>
 ```
 
+“blog/portfolio/themes/basic/layouts/posts/list.html”   create
+
+```html
+{{ define "main" }}
+  <h2>{{ .Title }}</h2>
+  {{ range .Pages }}
+    {{ partial "post_summary.html" . }}
+  {{ end }}
+{{ end }}
+```
+```
+$ cd themes/basic/layouts
+$ cp posts/list.html _default/year.html
+$ cp posts/list.html _default/month.html
+$ cd -
+```
+
+“blog/portfolio/themes/basic/layouts/partials/nav.html”   adding
+
+```html
+<nav>
+  <a href="/">Home</a>
+  <a href="/about">About</a>
+  <a href="/posts">Blog</a>
+  <a href="/projects">Projects</a>
+  <a href="/resume">Resume</a>
+  <a href="/contact">Contact</a>
+</nav>
+```
+
 // ================================================
+## Adding Pagination
+
+```
+$ hugo new posts/third-post.md
+```
+
+“blog/portfolio/themes/basic/layouts/posts/list_with_pagination.html”  create
+
+```
+{ define "main" }}
+  <h2>{{ .Title }}</h2>
+  {{ range (.Paginator 1).Pages }}
+    {{ partial "post_summary.html" . }}
+  {{ end }}
+  {{ template "_internal/pagination.html" . }}
+{{ end }}
+```
+
+“blog/portfolio/themes/basic/static/css/style.css”
+
+```css
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 1em auto;
+    padding: 0;
+}
+
+.pagination > .page-item {
+    border: 1px solid #ddd;
+    flex: 1;
+    text-align: center;
+    width: 5em;
+}
+
+.pagination .page-link {
+    display: block;
+    color: #000;
+    text-decoration: none;
+}
+
+.pagination > .page-item.active {
+    background-color: #333;
+}
+
+.pagination > .page-item.active > .page-link {”
+    color: #fff;
+}
+
+.pagination > .page-item.disabled > .page-link {
+    color: #ddd;
+}
+
+@media only screen and (min-width: 768px) {
+.pagination {
+    width: 30%;
+  }
+}
+```
+
+Now that you know the pagination works, <br> 
+open themes/basic/layouts/posts/list.html <br> 
+and change the number of paginated results to 10 posts:
+
+``` 
+{{ range (.Paginator 10).Pages }}
+```
+
+Alternatively, since the default is 10, <br> 
+change the range line back to the original code:
+
+```
+{{ range .Paginator.Pages }}
+```
+
+
+You can then control the number of results globally <br> 
+in the site’s configuration by adding the Paginate field to config.toml:
+
+```
+Paginate = 10
+```
+
 // ================================================
+## Adding Comments to Posts Using Disqus
+
+blog/portfolio/config.toml
+
+```
+theme = "basic"
+disqusShortname = "pp-hugo-demo"
+```
+
+blog/portfolio/themes/basic/layouts/posts/single.html
+
+```html
+<section class="body">
+    {{ .Content }}
+</section>
+<section class="comments">
+	    <h3>Comments</h3>”
+   {{ template "_internal/disqus.html" . }}
+</section>”
+```
+
+```
+$ npx localtunnel -p 1313
+```
+
+blog/portfolio/content/posts/first-post.md
+
+```
+categories:
+- Personal
+- Thoughts
+tags:
+- software
+- html
+disableComments: true
+```
+
+blog/portfolio/themes/basic/layouts/posts/single.html
+
+```html
+<section class="comments">
+  <h3>Comments</h3>
+  {{ if .Params.disableComments }}
+  <p>Comments are disabled for this post</p>
+{{ else }}
+{{ template "_internal/disqus.html" . }}
+{{ end }}
+```
+
 // ================================================
+## Displaying Related Content
 // ================================================

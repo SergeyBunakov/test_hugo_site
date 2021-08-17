@@ -1,0 +1,5 @@
+{ define "main" }}
+<h2>{{ .Title }}</h2>
+    {{ range (.Paginator 1).Pages }}
+    {{ template "_internal/pagination.html" . }}
+{{ end }}

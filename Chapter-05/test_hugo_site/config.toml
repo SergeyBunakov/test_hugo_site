@@ -1,7 +1,9 @@
 baseURL = 'http://example.org/'
-languageCode = 'en-us'
+languageCode = 'uk'
 title = 'Serg Hugo Site'
 theme = "basic"
+
+paginate = 3
 
 [params]
   author = "Sergey"
