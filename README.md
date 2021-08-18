@@ -1123,7 +1123,7 @@ the keywords and queries that get created for finding related content.
 
 search/portfolio/themes/basic/layouts/_default/search.json created
 
-```json 
+``` 
 {
 "results": [
   {{- range $index, $page := .Site.RegularPages }}
