@@ -32,7 +32,7 @@ $ rm -r public && hugo
 $ hugo --cleanDestinationDir --minify
 ```
 
-  ==============================  
+==============================
 
 # Chapter-02
 
@@ -46,7 +46,7 @@ $ mv layouts/index.html themes/basic/layouts/index.html
 $ mv layouts/_default/single.html themes/basic/layouts/_default/single.html
 ```
 
-  ==============================  
+==============================
 
 # Chapter-03
 
@@ -89,11 +89,11 @@ $ hugo new projects/jabberwocky.md
 ```html
 {{ define "main" }}
 <h2>{{ .Title }}</h2>
-  <ul>
-	    {{ range .Pages }}
-	      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-	    {{ end }}
-	  </ul>
+<ul>
+    {{ range .Pages }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ end }}
+</ul>
 
 {{ end }}
 ```
@@ -116,7 +116,7 @@ Then, create the file themes/basic/layouts/projects/single.html.
     </section>
     <section class="project">
         <h2>{{ .Title }}</h2>
-	      {{ .Content }}
+        {{ .Content }}
     </section>
 </div>
 {{ end }}
@@ -181,7 +181,7 @@ Create the file themes/basic/layouts/projects/list.html.
     <section class="project">
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
     </section>
-{{ end }}
+    {{ end }}
 </section>
 {{ end }}
 ```
@@ -205,11 +205,15 @@ description = "My portfolio site"
 “working_with_data/portfolio/themes/basic/layouts/partials/head.html”
 
 ```html
-<meta name="author" content="{{ .Site.Params.author }}">
-<link rel="stylesheet" href='{{ "css/style.css" | relURL }}'>
+
+<meta name="author"
+      content="{{ .Site.Params.author }}">
+<link rel="stylesheet"
+      href='{{ "css/style.css" | relURL }}'>
 
 Below that, add one for the description:
-<meta name="description" content="{{ .Site.Params.description }}">
+<meta name="description"
+      content="{{ .Site.Params.description }}">
 ```
 
 // ================================================
@@ -233,7 +237,7 @@ tech_used:
 Description of the {{ replace .Name "-" " " | title }} project...
 ```
 
-// ================================================ 
+// ================================================
 
 ```
 $ hugo new projects/linkitivity.md
@@ -256,7 +260,7 @@ tech_used:
 Description of Linkitivity project...
 ```
 
-// ================================================ 
+// ================================================
 
 “working_with_data/portfolio/content/projects/awesomeco.md”
 
@@ -277,19 +281,21 @@ Description of the Awesomeco project...
 
 // ================================================
 
-“working_with_data/portfolio/themes/basic/layouts/projects/single.html”   added
+“working_with_data/portfolio/themes/basic/layouts/projects/single.html” added
 
 ```html
+
 <section class="project">
-	  <h2>{{ .Title }}</h2>
-	  {{ .Content }}
-  <img alt="{{ .Params.alt_text }}" src="{{ .Params.image }}">
-	  <h3>Tech used</h3>
-  <ul>
-	    {{ range .Params.tech_used }}
-	      <li>{{ . }}</li>
-	    {{ end }}
-	  </ul>
+    <h2>{{ .Title }}</h2>
+    {{ .Content }}
+    <img alt="{{ .Params.alt_text }}"
+         src="{{ .Params.image }}">
+    <h3>Tech used</h3>
+    <ul>
+        {{ range .Params.tech_used }}
+        <li>{{ . }}</li>
+        {{ end }}
+    </ul>
 </section>
 ```
 
@@ -298,13 +304,14 @@ Description of the Awesomeco project...
 “working_with_data/portfolio/themes/basic/layouts/projects/list.html” added
 
 ```html
+
 <section class="projects">
-{{ range .Pages }}
-<section class="project">
-	      <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-  <p>{{ .Summary }}</p>
-</section>
-  {{ end }}
+    {{ range .Pages }}
+    <section class="project">
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Summary }}</p>
+    </section>
+    {{ end }}
 </section>
 {{ end }}
 ```
@@ -316,11 +323,12 @@ Description of the Awesomeco project...
 “working_with_data/portfolio/themes/basic/layouts/partials/head.html” replace
 
 ```html
-<meta name="description" content="{{- with .Page.Description -}}{{ . }}{{- else -}}{{ .Site.Params.description }}{{- end -}}">
+
+<meta name="description"
+      content="{{- with .Page.Description -}}{{ . }}{{- else -}}{{ .Site.Params.description }}{{- end -}}">
 ```
 
-// ================================================ 
-“working_with_data/portfolio/content/projects/_index.md” add
+// ================================================ “working_with_data/portfolio/content/projects/_index.md” add
 
 ```
 ---
@@ -336,11 +344,11 @@ description: A list of Serg's projects.
 
 ```html
 <title>
-{{- if .Page.IsHome -}}
-{{ .Site.Title }}
-{{- else -}}
-{{ .Title }} – {{ .Site.Title }}
-{{- end -}}
+    {{- if .Page.IsHome -}}
+    {{ .Site.Title }}
+    {{- else -}}
+    {{ .Title }} – {{ .Site.Title }}
+    {{- end -}}
 </title>
 ```
 
@@ -364,7 +372,7 @@ description: A list of Serg's projects.
 }
 ```
 
-// ================================================ 
+// ================================================
 
 “working_with_data/portfolio/layouts/_default/contact.html” create
 
@@ -379,9 +387,9 @@ description: A list of Serg's projects.
 ```html
 <h3>Social Media</h3>
 <ul>
-  {{ range .Site.Data.socialmedia.accounts }}
+    {{ range .Site.Data.socialmedia.accounts }}
     <li><a href="{{ .url }}">{{ .name }}</a></li>
-  {{ end }}
+    {{ end }}
 </ul>
 ```
 
@@ -393,14 +401,14 @@ description: A list of Serg's projects.
 {{ .Content }}
 <h3>Social Media</h3>
 <ul>
-{{ range .Site.Data.socialmedia.accounts }}
-	<li><a href="{{ .url }}">{{ .name }}</a></li>
-{{ end }}
+    {{ range .Site.Data.socialmedia.accounts }}
+    <li><a href="{{ .url }}">{{ .name }}</a></li>
+    {{ end }}
 </ul>
 {{ end }}
 ```
 
-// ================================================ 
+// ================================================
 
 “working_with_data/portfolio/content/contact.md” add
 
@@ -426,30 +434,30 @@ gh_url = "https://api.github.com/users"
 gh_user = "your-gh-user"
 ```
 
-// ================================================ 
+// ================================================
 
 “working_with_data/portfolio/themes/basic/layouts/_default/opensource.html” create
 
 ```html
 {{ define "main" }}
-  <h2>{{ .Title }}</h2>
-{{ .Content }} 
+<h2>{{ .Title }}</h2>
+{{ .Content }}
 {{ end }}
 ```
 
-// ================================================ 
+// ================================================
 
 “working_with_data/portfolio/themes/basic/layouts/_default/opensource.html” insert
 
 ```html
 {{ define "main" }}
 <h2>{{ .Title }}</h2>
-{{ .Content }} 
-{{ $url := printf "%s/%s/repos" .Site.Params.gh_url .Site.Params.gh_user }} 
+{{ .Content }}
+{{ $url := printf "%s/%s/repos" .Site.Params.gh_url .Site.Params.gh_user }}
 {{ end }}
 ```
 
-// ================================================ 
+// ================================================
 
 “working_with_data/portfolio/themes/basic/layouts/_default/opensource.html” add
 
@@ -461,14 +469,14 @@ gh_user = "your-gh-user"
 {{ $url := printf "%s/%s/repos" .Site.Params.gh_url .Site.Params.gh_user }}
 {{ $repos := getJSON $url }}
 
-  <section class="oss">
+<section class="oss">
     {{ range $repos }}
-      <article>
+    <article>
         <h3><a href="{{ .html_url }}">{{ .name }}</a></h3>
         <p>{{ .description }}</p>
-      </article>
+    </article>
     {{ end }}
-  </section>
+</section>
 {{ end }}
 ```
 
@@ -477,7 +485,6 @@ gh_user = "your-gh-user"
 ```
 $ hugo new opensource.md
 ```
-
 
 ```
 ---
@@ -496,17 +503,17 @@ My Open Source Software on GitHub:
 
 ```css
 .oss {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .oss article {
-  border: 1px solid #ddd;
-  box-shadow: 3px 3px 3px #ddd;
-  margin: 0.5%;
-  padding: 0.5%;
-  width: 30%;
+    border: 1px solid #ddd;
+    box-shadow: 3px 3px 3px #ddd;
+    margin: 0.5%;
+    padding: 0.5%;
+    width: 30%;
 }
 ```
 
@@ -515,13 +522,14 @@ My Open Source Software on GitHub:
 “working_with_data/portfolio/themes/basic/layouts/projects/list.html” add
 
 ```html
+
 <section class="projects">
-  <section class="project">
-    {{ with .Site.GetPage "/opensource.md" }}
-    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-    <p>{{ .Summary }}</p>
-    {{ end }}
-  </section>
+    <section class="project">
+        {{ with .Site.GetPage "/opensource.md" }}
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        <p>{{ .Summary }}</p>
+        {{ end }}
+    </section>
 </section>
 ```
 
@@ -532,15 +540,22 @@ My Open Source Software on GitHub:
 “working_with_data/portfolio/themes/basic/layouts/partials/head.html” add
 
 ```html
-<link rel="alternate" type="application/rss+xml" href="http://example.com/feed" >
+
+<link rel="alternate"
+      type="application/rss+xml"
+      href="http://example.com/feed">
 
 {{ range .AlternativeOutputFormats -}}
-  {{- $link := `<link rel="%s" type="%s" href="%s" title="%s">` -}}
-  {{- $title := printf "%s - %s" $.Page.Title $.Site.Title -}}
-  {{- if $.Page.IsHome -}}
-  {{ $title = $.Site.Title }}”
-  {{- end -}}
-  {{ printf $link .Rel .MediaType.Type .Permalink $title | safeHTML }}
+{{- $link := `
+<link rel="%s"
+      type="%s"
+      href="%s"
+      title="%s">` -}}
+{{- $title := printf "%s - %s" $.Page.Title $.Site.Title -}}
+{{- if $.Page.IsHome -}}
+{{ $title = $.Site.Title }}”
+{{- end -}}
+{{ printf $link .Rel .MediaType.Type .Permalink $title | safeHTML }}
 {{- end }}
 ```
 
@@ -619,27 +634,27 @@ $ hugo new posts/first-post.md
 $ mkdir themes/basic/layouts/posts  
 ```
 
-“blog/portfolio/themes/basic/layouts/posts/single.html”  create
+“blog/portfolio/themes/basic/layouts/posts/single.html” create
 
 ```html
 {{ define "main" }}
 <article class="post">
-  <header>
-    <h2>{{ .Title }}</h2>
-    <p>
-        By {{ .Params.Author }}
-    </p>
-    <p>
-        Posted {{ .Date.format "January 2.2006" }}
-    </p>
-    <p>
-      Reading time: {{ math.Round (div (countwords .Content) 200.0) }} minutes.
-    </p>
-  </header>
+    <header>
+        <h2>{{ .Title }}</h2>
+        <p>
+            By {{ .Params.Author }}
+        </p>
+        <p>
+            Posted {{ .Date.format "January 2.2006" }}
+        </p>
+        <p>
+            Reading time: {{ math.Round (div (countwords .Content) 200.0) }} minutes.
+        </p>
+    </header>
 
-  <section class="body">
-    {{ .Content }}
-  </section>
+    <section class="body">
+        {{ .Content }}
+    </section>
 </article>
 {{ end }}
 ```
@@ -656,7 +671,7 @@ $ hugo gen chromastyles --style=github &gt; syntax.css
 
 ## Organizing Content with Taxonomies
 
-“blog/portfolio/archetypes/posts.md”  add
+“blog/portfolio/archetypes/posts.md” add
 
 ```
 categories:
@@ -667,7 +682,7 @@ tags:
 - html
 ```
 
-“blog/portfolio/content/posts/first-post.md”  added too
+“blog/portfolio/content/posts/first-post.md” added too
 
 ```
 categories:
@@ -679,22 +694,22 @@ categories:
 ```
 
 “Visit http://localhost:1313/tags” <br>
-“Visit https://localhost:1313/categories” 
+“Visit https://localhost:1313/categories”
 
 // ================================================
 
-“blog/portfolio/themes/basic/layouts/_default/tag.terms.html”  create
+“blog/portfolio/themes/basic/layouts/_default/tag.terms.html” create
 
 ```html
 {{ define "main" }}
-  <h2>{{ .Title }}</h2>
-    {{ .Content }}
-    {{ range .Data.Terms.Alphabetical }}
-    <p class="tag">
+<h2>{{ .Title }}</h2>
+{{ .Content }}
+{{ range .Data.Terms.Alphabetical }}
+<p class="tag">
     <a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a>
     <span class="count">({{ .Count }})</span>
-    </p>
-    {{ end }}
+</p>
+{{ end }}
 {{ end }}
 ```
 
@@ -704,7 +719,7 @@ categories:
 $ hugo new tags/_index.md
 ```
 
-“blog/portfolio/content/tags/_index.md”  add 
+“blog/portfolio/content/tags/_index.md” add
 
 ```
 ---
@@ -718,7 +733,7 @@ These are the site's tags:
 
 // ================================================
 
-“theme/basic/layouts/_default/tags.html”  create
+“theme/basic/layouts/_default/tags.html” create
 
 ```html
 {{ define "main" }}
@@ -734,7 +749,7 @@ These are the site's tags:
 
 // ================================================
 
-“blog/portfolio/themes/basic/layouts/posts/single.html”    added "<span>"
+“blog/portfolio/themes/basic/layouts/posts/single.html” added "<span>"
 
 ```html
 {{ define "main" }}
@@ -749,7 +764,8 @@ These are the site's tags:
             <span class="tags">
                 in
                 {{ range .Params.tags }}
-                <a class="tag" href="/tags/{{ . | urlize }}">{{ . }}</a>
+                <a class="tag"
+                   href="/tags/{{ . | urlize }}">{{ . }}</a>
                 {{ end }}
             </span>
         </p>
@@ -766,16 +782,16 @@ These are the site's tags:
 
 // ================================================
 
-“blog/portfolio/themes/basic/static/css/style.css”  add
+“blog/portfolio/themes/basic/static/css/style.css” add
 
 ```css
 a.tag {
-  background-color: #ddd;
-  color: #333;
-  display: inline-block;
-  padding: 0.1em;
-  font-size: 0.9em;
-  text-decoration: none;
+    background-color: #ddd;
+    color: #333;
+    display: inline-block;
+    padding: 0.1em;
+    font-size: 0.9em;
+    text-decoration: none;
 }
 ```
 
@@ -783,12 +799,10 @@ a.tag {
 
 ### Disabling Taxonomies
 
-By default, Hugo generates category and tag pages for you. 
-But if you have no interest in tags, 
-you can configure your site to ignore then. 
-In your "config.toml" file, add the following code:
-By doing this, you’re redefining the taxonomies to exclude tags. 
-If you wanted tags but not categories, you’d add this code instead:
+By default, Hugo generates category and tag pages for you. But if you have no interest in tags, you can configure your
+site to ignore then. In your "config.toml" file, add the following code:
+By doing this, you’re redefining the taxonomies to exclude tags. If you wanted tags but not categories, you’d add this
+code instead:
 
 ```
 [taxonomies]
@@ -815,7 +829,7 @@ If you wanted tags but not categories, you’d add this code instead:
 
 // ================================================
 
-“blog/portfolio/archetypes/posts.md”  add
+“blog/portfolio/archetypes/posts.md” add
 
 ```
 year: "{{ dateFormat "2006" .Date }}"
@@ -826,33 +840,35 @@ month: "{{ dateFormat "2006/01" .Date }}”
 
 ## “Customizing Blog List Pages”
 
-“blog/portfolio/themes/basic/layouts/partials/post_summary.html”  create and add following code
+“blog/portfolio/themes/basic/layouts/partials/post_summary.html” create and add following code
 
 ```html
+
 <article>
-  <header>
-    <h3>
-      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-    </h3>
-    <time>
-      {{ .Date | dateFormat "January" }}
-      {{ .Date | dateFormat "2" }}
-    </time>
-  </header>
- {{ .Summary }}
+    <header>
+        <h3>
+            <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </h3>
+        <time>
+            {{ .Date | dateFormat "January" }}
+            {{ .Date | dateFormat "2" }}
+        </time>
+    </header>
+    {{ .Summary }}
 </article>
 ```
 
-“blog/portfolio/themes/basic/layouts/posts/list.html”   create
+“blog/portfolio/themes/basic/layouts/posts/list.html” create
 
 ```html
 {{ define "main" }}
-  <h2>{{ .Title }}</h2>
-  {{ range .Pages }}
-    {{ partial "post_summary.html" . }}
-  {{ end }}
+<h2>{{ .Title }}</h2>
+{{ range .Pages }}
+{{ partial "post_summary.html" . }}
+{{ end }}
 {{ end }}
 ```
+
 ```
 $ cd themes/basic/layouts
 $ cp posts/list.html _default/year.html
@@ -860,35 +876,37 @@ $ cp posts/list.html _default/month.html
 $ cd -
 ```
 
-“blog/portfolio/themes/basic/layouts/partials/nav.html”   adding
+“blog/portfolio/themes/basic/layouts/partials/nav.html” adding
 
 ```html
+
 <nav>
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/posts">Blog</a>
-  <a href="/projects">Projects</a>
-  <a href="/resume">Resume</a>
-  <a href="/contact">Contact</a>
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/posts">Blog</a>
+    <a href="/projects">Projects</a>
+    <a href="/resume">Resume</a>
+    <a href="/contact">Contact</a>
 </nav>
 ```
 
 // ================================================
+
 ## Adding Pagination
 
 ```
 $ hugo new posts/third-post.md
 ```
 
-“blog/portfolio/themes/basic/layouts/posts/list_with_pagination.html”  create
+“blog/portfolio/themes/basic/layouts/posts/list_with_pagination.html” create
 
-```
+```html
 { define "main" }}
-  <h2>{{ .Title }}</h2>
-  {{ range (.Paginator 1).Pages }}
-    {{ partial "post_summary.html" . }}
-  {{ end }}
-  {{ template "_internal/pagination.html" . }}
+<h2>{{ .Title }}</h2>
+{{ range (.Paginator 1).Pages }}
+{{ partial "post_summary.html" . }}
+{{ end }}
+{{ template "_internal/pagination.html" . }}
 {{ end }}
 ```
 
@@ -920,7 +938,7 @@ $ hugo new posts/third-post.md
     background-color: #333;
 }
 
-.pagination > .page-item.active > .page-link {”
+.pagination > .page-item.active > .page-link {
     color: #fff;
 }
 
@@ -929,29 +947,28 @@ $ hugo new posts/third-post.md
 }
 
 @media only screen and (min-width: 768px) {
-.pagination {
-    width: 30%;
-  }
+    .pagination {
+        width: 30%;
+    }
 }
 ```
 
-Now that you know the pagination works, <br> 
-open themes/basic/layouts/posts/list.html <br> 
+Now that you know the pagination works, <br>
+open themes/basic/layouts/posts/list.html <br>
 and change the number of paginated results to 10 posts:
 
 ``` 
 {{ range (.Paginator 10).Pages }}
 ```
 
-Alternatively, since the default is 10, <br> 
+Alternatively, since the default is 10, <br>
 change the range line back to the original code:
 
 ```
 {{ range .Paginator.Pages }}
 ```
 
-
-You can then control the number of results globally <br> 
+You can then control the number of results globally <br>
 in the site’s configuration by adding the Paginate field to config.toml:
 
 ```
@@ -959,6 +976,7 @@ Paginate = 10
 ```
 
 // ================================================
+
 ## Adding Comments to Posts Using Disqus
 
 blog/portfolio/config.toml
@@ -971,13 +989,14 @@ disqusShortname = "pp-hugo-demo"
 blog/portfolio/themes/basic/layouts/posts/single.html
 
 ```html
+
 <section class="body">
     {{ .Content }}
 </section>
 <section class="comments">
-	    <h3>Comments</h3>”
-   {{ template "_internal/disqus.html" . }}
-</section>”
+    <h3>Comments</h3>
+    {{ template "_internal/disqus.html" . }}
+</section>
 ```
 
 ```
@@ -999,22 +1018,24 @@ disableComments: true
 blog/portfolio/themes/basic/layouts/posts/single.html
 
 ```html
+
 <section class="comments">
-  <h3>Comments</h3>
-  {{ if .Params.disableComments }}
-  <p>Comments are disabled for this post</p>
-{{ else }}
-{{ template "_internal/disqus.html" . }}
-{{ end }}
+    <h3>Comments</h3>
+    {{ if .Params.disableComments }}
+    <p>Comments are disabled for this post</p>
+    {{ else }}
+    {{ template "_internal/disqus.html" . }}
+    {{ end }}
 ```
 
 // ================================================
+
 ## Displaying Related Content
 
 blog/portfolio/content/projects/jabberwocky.md
 
 ```
-ech_used:
+tech_used:
 - JavaScript
 - CSS
 - HTML
@@ -1022,4 +1043,316 @@ keywords:
 - jabberwocky
 ```
 
+blog/portfolio/content/posts/second-post.md
+
+```
+tags:
+- software
+- html
+keywords:
+- jabberwocky
+```
+
+blog/portfolio/themes/basic/layouts/posts/single.html
+
+```
+<section class="body">
+  {{ .Content }}
+</section>
+<section class="related">
+ {{ $related := .Site.RegularPages.Related . | first 5 }}
+ {{ with $related }}
+  <h3>Related pages</h3>
+   <ul>
+     {{ range . }}
+     <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+     {{ end }}
+   </ul>
+ {{ end }}
+</section>
+```
+
+To change the behavior of related content, <br>
+you must add the entire configuration block to your ***config.toml*** <br>
+file and then modify it to suit your needs.
+
+``` 
+[related]
+threshold = 80.0
+includeNewer = false
+toLower = false
+	
+  [[related.indices]]
+  name = "keywords"
+  weight = 100.0
+	
+  [[related.indices]]
+    name = "date"
+    weight = 10.0
+```
+
+To change the behavior of related content, <br>
+you must add the entire configuration block <br>
+to your ***config.toml*** file and then modify <br>
+it to suit your needs. There are a few options you might want to explore <br>
+when setting up the related post content. <br>
+For example, the includeNewer option, if set to true, <br>
+will update older pages on your site with new related content. <br>
+The threshold is a number between 0 and 100, with lower numbers <br>
+showing more content with less relevance. <br>
+Also, the toLower option can increase the matches by lowercasing <br>
+the keywords and queries that get created for finding related content.
+
+// ================================================
+
+# Chapter-06
+
+## Adding Search to Your Site
+
+### Creating the Document Collection
+
+```
+[{
+  "name": "A document",
+  "text": "A bunch of content filled with amazing thoughts."
+}, {
+  "name": "A second document",
+  "text": "Similar, but different from the first one."
+}]
+```
+
+search/portfolio/themes/basic/layouts/_default/search.json created
+
+```json 
+{
+"results": [
+  {{- range $index, $page := .Site.RegularPages }}
+  {{- if $index -}} , {{- end }}
+	    {
+"href": {{ .Permalink | jsonify }},
+"title": {{ .Title | jsonify }},
+"body": {{ .Content | plainify | jsonify }}
+  }
+{{- end }}
+  ]
+}
+```
+
+``` 
+$ hugo new search.md
+```
+
+"search/portfolio/content/search.md"   created
+
+```
+---
+title: "Search"
+date: 2020-01-02T12:42:17-05:00
+draft: false
+outputs:
+- HTML
+- JSON
+layout: search
+---
+```
+
+Start the Hugo server and visit http://localhost:1313/search/index.json <br>
+and you’ll see your documents:
+-----------------
+
+### Creating the Search Interface
+
+“search/portfolio/themes/basic/layouts/_default/search.html”
+
+```html
+{{ define "main" }}
+
+<h2>{{ .Title }}</h2>
+
+<input type="search"
+       id="searchField">
+<button id="searchButton">Search</button>
+
+<div id="output">
+    <p>Waiting for search input</p>
+</div>
+{{ end }}
+```
+
+“search/portfolio/themes/basic/layouts/_default/search.html” <br>
+right before the **{{ end }}**
+
+```html
+<script src="//unpkg.com/lunr@2.3.6/lunr.js"></script>
+<script src="//unpkg.com/axios@0.19.0/dist/axios.js"></script>
+```
+-------------------------
+
+Create the file themes/basic/static/js/search.js <br>
+and add an alert statement to the file so you can test that the script loads properly:
+
+```js
+alert("Search!");
+```
+
+“search/portfolio/themes/basic/layouts/_default/search.html”
+
+```html
+<script src="{{ "js/search.js" | relURL }}"></script>
+```
+
+“search/portfolio/themes/basic/static/js/search.js”
+
+```js
+'use strict'
+
+window.SearchApp = {
+    searchField: document.getElementById("searchField"),
+    searchButton: document.getElementById("searchButton"),
+    output: document.getElementById("output"),
+    searchData: {},
+    searchIndex: {}
+};
+```
+
+search/portfolio/themes/basic/static/js/search.js
+
+```js
+axios
+ .get('/search/index.json')
+	  .then(response => {
+	    SearchApp.searchData = response.data;
+	    SearchApp.searchIndex = lunr(function () {
+	      this.ref('href');
+	      this.field('title');
+	      this.field('body');
+      response.data.results.forEach(e => {
+        this.add(e);
+      });
+   });
+});
+```
+
+search/portfolio/themes/basic/static/js/search.js
+
+```js
+SearchApp.searchButton.addEventListener('click', search);
+
+function search() {
+    let searchText = SearchApp.searchField.value;
+
+
+    let resultList = SearchApp.searchIndex.search(searchText);
+
+    let list = [];
+    let results = resultList.map(entry => {
+        SearchApp.searchData.results.filter(d => {
+            if (entry.ref == d.href) {
+                list.push(d);
+            }
+        })
+    });
+
+    display(list);
+
+}
+```
+
+“search/portfolio/themes/basic/static/js/search.js”
+
+```js
+function display(list) {
+
+    SearchApp.output.innerText = '';
+    if (list.length > 0) {
+        const ul = document.createElement("ul");
+        list.forEach(el => {
+            const li = document.createElement("li");
+            const a = document.createElement("a");
+            a.href = el.href;
+            a.text = el.title;
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+
+        SearchApp.output.appendChild(ul);
+    } else {
+        SearchApp.output.innerHTML = "Nothing found";
+    }
+
+};
+```
+
+### Improving the Search
+
+“search/portfolio/themes/basic/static/js/search.js”
+
+```js
+function search() {
+    let searchText = SearchApp.searchField.value;
+
+    searchText = searchText
+        .split(" ")
+        .map(word => {
+            return word + "*"
+        })
+        .join(" ");
+}  
+```
+
+“search/portfolio/themes/basic/static/js/search.js”
+
+```js
+SearchApp.searchIndex = lunr(function () {
+    this.pipeline.remove(lunr.stemmer);
+    this.searchPipeline.remove(lunr.stemmer);
+    this.ref('href');
+    this.field('title');
+    this.field('body');
+    response.data.results.forEach(e => {
+        this.add(e);
+    });
+});
+```
+
+“search/portfolio/themes/basic/layouts/_default/search.html”
+
+```html
+<input type="search" id="searchField">
+	<button id="searchButton">Search</button>
+	<input id="allwords" type="checkbox">
+	<label for="allwords">Require all words</label>
+```
+
+“search/portfolio/themes/basic/static/js/search.js”
+
+```js
+window.SearchApp = {
+  searchField: document.getElementById("searchField"),
+  searchButton: document.getElementById("searchButton"),
+  allwords: document.getElementById("allwords"),
+  output: document.getElementById("output"),
+  searchData: {},
+  searchIndex: {}
+};
+```
+
+“search/portfolio/themes/basic/static/js/search.js”
+
+```js
+if (SearchApp.allwords.checked) {
+	  searchText = searchText
+    .split(" ")
+    .map( word => { return "+" + word })
+    .join(" ");
+}
+	
+let resultList = SearchApp.searchIndex.search(searchText);
+```
+// ================================================ <br>
+# Chapter-07
+## Managing Assets with Pipes
+
+// ================================================ <br>
+// ================================================ <br>
 // ================================================
